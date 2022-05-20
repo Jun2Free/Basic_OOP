@@ -4,4 +4,4 @@ project(src)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(src
-        student.cpp)
+        abstraction.cpp)
