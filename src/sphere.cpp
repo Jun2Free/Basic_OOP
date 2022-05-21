@@ -5,7 +5,9 @@
 
 class Sphere {
 public:
-    Sphere(double radius): radius_(radius) {};
+    // static member variable is initialized only once and shared by all members in the class
+    static int counter;
+    Sphere(double radius): radius_(radius) {}
 
     // Accessor
     double GetRadius() {return radius_;}
@@ -21,7 +23,9 @@ public:
     }
 
 private:
-    double const pi_{3.141592};     // if the order is changed, it causes an error
+    // if I want to initiate pi_ in compile time, I have to set the variable as constexpr
+    // on the other hand, if I want to initiate the variable in runtime, it should be const
+    static double constexpr pi_{3.141592};
     double radius_;
     double volume_;
     void validate() { if (GetRadius() <= 0) throw std::invalid_argument("radius must be positive");}
