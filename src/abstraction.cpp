@@ -20,13 +20,11 @@ private:
     int month_{1};
     int year_{0};
 };
-
 Date::Date(int day, int month, int year) {
     Year(year);
     Month(month);
     Day(day);
 }
-
 bool Date::LeapYear(int year) const {
     if (year % 4 != 0)
         return false;
@@ -56,23 +54,15 @@ void Date::Year(int year) {
 }
 
 std::string Date::String() const {
+    std::vector<std::string> month_vec = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Opt", "Nov", "Dec"};
     std::string output;
     std::string month_s;
     std::string day_s = std::to_string(Day());
     std::string year_s = std::to_string(Year());
 
     // change the int type of month to string type
-    if (Month() == 1)
-        month_s = "Jan";
-    else if (Month() == 2)
-        month_s = "Feb";
-    else if (Month() == 8)
-        month_s = "Aug";
-    else
-        month_s = "Dec";
-
+    month_s = month_vec[Month() - 1];
     output = month_s + " " + day_s + ", " + year_s;
-
     return output;
 }
 
